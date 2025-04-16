@@ -1,0 +1,44 @@
+---
+import SectionContainer from "./SectionContainer.astro"
+import ItemProject from "./ProjectCard.astro"
+import Title from "./Title.astro"
+
+import TailwindIcon from "./icons/Tailwind.astro"
+import AstroIcon from "./icons/AstroIcon.astro"
+
+const TAGS = {
+    ASTRO: {
+        name: "Astro",
+        class: "bg-[#FF5D01] text-white",
+        icon: AstroIcon,
+    },
+    TAILWIND: {
+        name: "Tailwind CSS",
+        class: "bg-[#003159] text-white",
+        icon: TailwindIcon,
+    },
+}
+
+const PROJECTS = [
+    {
+        title: "Portafolio Personal",
+        tags:[TAGS.ASTRO,TAGS.TAILWIND],
+        description: "Un portafolio personal para mostrar mis proyectos y habilidades. Desarrollado con Astro y Tailwind, uso de JS vanilla minimo, responsivo para todos los dispositivos.",
+        image: "portafolio-personal.jpg",
+        repo: "https://github.com/Arturooiwnl/mi-portafolio",
+        demo: "#home"
+    }
+]
+
+
+---
+<SectionContainer id="proyectos">
+
+        <Title iconName="CodeIcon">Proyectos</Title>
+
+        {PROJECTS.map(project => (
+
+            <ItemProject tags={project.tags} title={project.title} image={`/images/projects/${project.image}`} description={project.description} repo={project.repo}/>
+
+        ))}
+</SectionContainer>

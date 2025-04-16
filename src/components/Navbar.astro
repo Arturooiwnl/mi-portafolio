@@ -1,0 +1,65 @@
+---
+const NAVIGATIONS = [
+  { name: "Inicio", link: "#home" },
+  { name: "Educación", link: "#educacion" },
+  { name: "Proyectos", link: "#proyectos" },
+  { name: "Sobre Mi", link: "#sobre-mi" },
+  { name: "Contacto", link: "mailto:andresperotto71gmail.com" }
+];
+---
+<header class="w-full fixed top-0 left-0 z-50 bg-transparent">
+  <nav class="relative flex justify-between items-center px-5 py-4 sm:px-10 rounded-full sm:backdrop-blur-md sm:bg-slate-950/30 sm:shadow-md">
+    <ul class="hidden sm:flex justify-center items-center gap-8 w-full font-bold text-sm sm:text-lg text-white">
+      {
+        NAVIGATIONS.map((nav) => (
+          <li>
+            <a href={nav.link} class="hover:text-white/60 transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-white/60 after:transition-all after:duration-300 hover:after:w-full">
+              {nav.name}
+            </a>
+          </li>
+        ))
+      }
+  </ul>
+  <button
+  id="menu-toggle"
+  class="sm:hidden absolute right-3 top-3  flex flex-col justify-center items-center text-center size-9 gap-[6px] group z-50"
+  aria-label="Abrir menú"
+  >
+  <span class="bg-white w-6 h-[2px] rounded transition-all duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-[8px]"></span>
+  <span class="bg-white w-6 h-[2px] rounded transition-all duration-300 group-[.open]:opacity-0"></span>
+  <span class="bg-white w-6 h-[2px] rounded transition-all duration-300 group-[.open]:-rotate-45 group-[.open]:-translate-y-[8px]"></span>
+</button>
+</nav>
+<div id="mobile-menu" class="sm:hidden ml-10 mr-10 left-0 hidden rounded-2xl bg-slate-950/90 backdrop-blur-md shadow-lg">
+  <ul class="flex flex-col items-center gap-6 py-6 text-white font-semibold text-lg">
+    {
+      NAVIGATIONS.map((nav) => (
+        <li>
+            <a href={nav.link} class="hover:text-white/60 transition-all duration-300 mobile-link">
+              {nav.name}
+            </a>
+          </li>
+        ))
+      }
+  </ul>
+</div>
+
+
+  <script is:inline>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const links = document.querySelectorAll('.mobile-link');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      toggle.classList.toggle('open');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        toggle.classList.remove('open');
+      });
+    });
+  </script>
+</header>

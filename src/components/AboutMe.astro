@@ -1,0 +1,33 @@
+--- 
+import SectionContainer from "./SectionContainer.astro";
+import Title from "./Title.astro";
+---
+
+<SectionContainer id="sobre-mi">
+    <Title iconName="GlobeTextICon">Sobre Mí</Title>
+    <article class="relative flex flex-col sm:flex-row w-full sm:w-3xl justify-center items-center sm:justify-between p-4">
+        <img 
+            width="200" 
+            height="200" 
+            src="images/me-2.png" 
+            alt="Arturo Perotto" 
+            class="order-1 mb-5 object-cover w-64 h-64 p-1 md:order-2 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-blue-300/20 dark:bg-blue-300/70 ring-1 ring-blue-300/30 dark:ring-white/40" 
+            style="object-position: 50% 50%"
+        >
+
+        <div class="order-2 text-pretty text-left sm:text-pretty sm:text-left sm:order-1 sm:mr-10 text-gray-500 dark:text-gray-400 sm:w-2/1 text-base sm:text-lg lg:text-xl ">
+            <p class="mb-3 dark:[&>strong]:text-blue-300 dark:[&>strong]:font-mono">
+                ¡Hola! Soy <strong>Arturo</strong>, encantado de que te pases por aquí.
+                Empecé en la Programación a los 15-16 años, sin tener mucha idea acerca de lo que era. Actualmente, me encuentro <strong>formandome en una Universidad y haciendo de Freelance como desarrollador Web</strong>.
+            </p>
+            <p class="mb-3 dark:[&>strong]:text-blue-300 dark:[&>strong]:font-mono">
+                Lo que más puedo destacar de mi es el <strong>entusiasmo que tengo a la hora de empezar nuevos proyectos</strong> y <strong>en momentos donde deba ayudar a compañeros</strong>. 
+            </p>
+            <p class="mb-3 dark:[&>strong]:text-blue-300 dark:[&>strong]:font-mono">
+                Mi objetivo es <strong>convertirme en un proveedor de soluciones excelentes</strong>, 
+                creando aplicaciones web que sean funcionales, sobre todo actractivas visualmente, 
+                <strong>mientras sigo aprendiendo y creciendo como desarrollador</strong>.
+            </p>
+        </div>
+    </article>
+</SectionContainer>

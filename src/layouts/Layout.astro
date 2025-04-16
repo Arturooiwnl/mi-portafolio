@@ -1,0 +1,110 @@
+---
+import '../styles/global.css'
+
+import { ClientRouter } from "astro:transitions"
+
+interface Props{
+	title: string;
+}
+
+const {title} = Astro.props;
+
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/icon.png" />
+		<title>{title}</title>
+		<ClientRouter />
+	</head>
+	<body class="relative text-black dark:text-white">
+		<div class="fixed inset-0 -z-10 w-full min-h-screen dark:bg-slate-950 bg-white">
+			<div class="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
+			<div class="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
+			<div class="absolute bottom-0 right-[20%] top-[40%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.05),rgba(0,0,0,0))] dark:bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
+		</div>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+	  color-scheme: light dark;
+	}
+
+	html {
+	  font-family: system-ui, sans-serif;
+	  scroll-behavior: smooth;
+	}
+
+	body {
+	  color: rgba(17, 17, 17, 0.9);
+	  display: flex;
+	  flex-direction: column;
+	  min-height: 100vh;
+	  overscroll-behavior: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+	  html {
+		scroll-behavior: auto;
+	  }
+	}
+
+	@media (prefers-color-scheme: dark) {
+	  body {
+		color: rgba(255, 255, 255, 0.9);
+	  }
+	}
+
+	#header-nav {
+	  animation: blur linear both 0.5s;
+	  animation-timeline: scroll();
+	  animation-range: 0 500px;
+	}
+
+	@keyframes blur {
+	  to {
+		backdrop-filter: blur(20px);
+		border-width: 1px;
+		border-color: rgba(0, 0, 0);
+		padding: 0.25rem 0.75rem;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		background-color: rgb(229, 229, 229);
+		border-radius: 9999px;
+	  }
+	}
+
+	@media (prefers-color-scheme: dark) {
+	  @keyframes blur {
+		from {
+		  border: 0px;
+		}
+		to {
+		  box-shadow:
+			0px 5px 50px -5px rgba(0, 0, 0, 0.1),
+			0px 0px 0 1px rgba(0, 0, 0, 0.3);
+		  background: rgba(0, 0, 0, 0.3);
+		  backdrop-filter: blur(20px);
+		  border-width: 1px;
+		  border-color: rgba(0, 0, 0);
+		  padding-left: 0.75rem;
+		  padding-right: 0.75rem;
+		  padding-top: 0.25rem;
+		  padding-bottom: 0.25rem;
+		  display: flex;
+		  flex-direction: row;
+		  align-items: center;
+		  background-color: rgba(0, 0, 0, 0.3);
+		  border-radius: 9999px;
+		}
+	  }
+	}
+  </style>
+</body>
+</html>

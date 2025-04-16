@@ -1,0 +1,37 @@
+---
+import Title from "./Title.astro"
+import SectionContainer from "./SectionContainer.astro";
+import ItemEducacion from "./ItemEducacion.astro";
+
+const EDUCATION_ITEMS = [
+    {
+        title: "Entrando al Mundo de la Programación",
+        date: "20 de Noviembre de 2020",
+        description: "Por primera vez estaba viendo lo que era programar, empezando por realizar sitios web con CSS, HTML y JS vanilla. Aprendia mediante documentaciones y videos acerca del desarrollo web.",
+    },
+    {
+        title: "Inicio Carrera de Programación",
+        date: "15 de Febrero de 2024",
+        description: "Dando los primeros pasos como futuro programador matriculado. Empecé en la Tecnicatura en Programación en la <a class='text-blue-300 font-semibold underline' href='https://fra.utn.edu.ar/'>UTN-FRA</a>",
+    },
+    {
+        title: "Desarrollando Sitios Web",
+        date: "En la Actualidad",
+        description: "Actualmente, me sigo formando en la <a class='text-blue-300 font-semibold underline' href='https://fra.utn.edu.ar/'>UTN-FRA</a>, pero estoy como desarrollador independiente de aplicaciones web.",
+    },
+];
+
+---
+
+<SectionContainer
+  id="educacion"
+>
+    <Title iconName="TrajectoryIcon">Educación y Desarrollo </Title>
+    <ol class="relative border-s border-gray-200 dark:border-gray-700">
+        {    
+            EDUCATION_ITEMS.map((social) =>(
+                <ItemEducacion title={social.title} date={social.date} description={social.description} ></ItemEducacion>
+            ))
+        }
+    </ol>
+</SectionContainer>

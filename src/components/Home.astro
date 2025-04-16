@@ -1,0 +1,112 @@
+---
+import SectionContainer from "./SectionContainer.astro";
+
+import SocialButton from "./LinkButton.astro";
+import SocialButtonAnimated from "./LinkButtonAnimated.astro";
+
+import GithubIcon from "./icons/Github.astro";
+import InstagramIcon from "./icons/Instagram.astro";
+import TwitterIcon from "./icons/Twitter.astro";
+import LinkedInIcon from "./icons/LinkedIn.astro";
+import MailIcon from "./icons/Mail.astro";
+
+const SOCIAL_LINKS = [
+  {
+    name: "GitHub",
+    icon: GithubIcon,
+    defaultColor: "text-gray-300",
+    color: {
+      raw: "#181717", 
+      textClass: "text-[#181717]",
+    },
+    link: "https://github.com/arturooiwnl",
+  },
+  {
+    name: "LinkedIn",
+    icon: LinkedInIcon,
+    defaultColor: "text-gray-300",
+    color: {
+      raw: "#0A66C2",
+      textClass: "text-[#0A66C2]",
+    },
+    link: "https://www.linkedin.com/in/arturo-perotto-4028ab34a/",
+  },
+  {
+    name: "Twitter",
+    icon: TwitterIcon,
+    defaultColor: "text-gray-300",
+    color: {
+      raw: "#1DA1F2",
+      textClass: "text-[#1DA1F2]",
+    },
+    link: "https://twitter.com/arturoperotto",
+  },
+  {
+    name: "Instagram",
+    icon: InstagramIcon,
+    defaultColor: "text-gray-300",
+    color: {
+      raw: "#EA6478", 
+      textClass: "text-[#EA6478]",
+    },
+    link: "https://www.instagram.com/arturoossj",
+  }
+];
+
+const MAIL = {
+  displayName: "Contáctame",
+  icon: MailIcon,
+  class: "text-blue-300 font-bold",
+  link: "mailto:andresperotto71@gmail.com"
+}
+---
+
+<SectionContainer
+  id="home"
+>
+  <div class="max-w-2xl w-full flex flex-col gap-6">
+    <div
+      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+    >
+      <img
+        class="size-50 sm:w-56 sm:h-56 aspect-square rounded-full border-2 border-blue-300 object-cover mx-auto sm:mx-0"
+        src="images/me-1.png"
+        alt="Foto de perfil de Arturoiwnl"
+      />
+      <div>
+        <h1
+          class="text-2xl sm:text-3xl md:text-5xl lg:text-5xl font-bold tracking-tight text-gray-800 dark:text-white text-center sm:text-left"
+        >
+          Hola, soy Arturo
+        </h1>
+        <p
+          class="mt-4 text-base sm:text-lg md:text-xl text-gray-800 dark:text-gray-300 [&>strong]:font-semibold [&>strong]:text-yellow-500 dark:[&>strong]:text-blue-300 text-center sm:text-left"
+        >
+          +2 años de experiencia. <strong
+            >Programador Principiante y entusiasta de la tecnología</strong
+          >. De Buenos Aires, Argentina. Comprometido a desarrollar sitios webs <strong
+            >únicos</strong
+          >.
+        </p>
+      </div>
+    </div>
+    <div class="md:flex 
+                gap-2 
+                md:justify-center
+                grid
+                grid-cols-2
+                text-center
+                ">
+        {
+            SOCIAL_LINKS.map((social) =>(
+
+            <SocialButton extraClass="justify-center" textColor={social.defaultColor} href={social.link}><social.icon class="mr-2.5 size-6"/> {social.name}</SocialButton>
+            ))
+        }
+    </div>
+    <div class="flex justify-center p"> 
+        <SocialButtonAnimated extraClass={MAIL.class} href={MAIL.link}><MAIL.icon class="mr-2.5 size-6"/> {MAIL.displayName}</SocialButtonAnimated>
+    </div>
+  </div>
+
+</SectionContainer>
