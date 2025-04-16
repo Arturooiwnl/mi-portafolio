@@ -1,4 +1,4 @@
-# PORTAFOLIO PERSONAL | [Arturoiwnl](https://arturoiwnl.web.app/) | 
+# PORTAFOLIO PERSONAL | Arturoiwnl 
 
 ## Tecnologias Usadas:
 
@@ -14,5 +14,6 @@ El proyecto sufrira cambios cada tanto.
 
 LICENCIA
 
+---
 
 
