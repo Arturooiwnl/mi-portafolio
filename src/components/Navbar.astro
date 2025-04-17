@@ -1,65 +1,138 @@
 ---
 const NAVIGATIONS = [
-  { name: "Inicio", link: "#home" },
-  { name: "Experiencia", link: "#experiencia" },
-  { name: "Proyectos", link: "#proyectos" },
-  { name: "Sobre Mi", link: "#sobre-mi" },
-  { name: "Contacto", link: "mailto:andresperotto71gmail.com" }
+  { name: "Inicio", link: "#home", label: "home" },
+  { name: "Experiencia", link: "#experiencia", label: "experiencia" },
+  { name: "Proyectos", link: "#proyectos", label: "proyectos" },
+  { name: "Sobre Mi", link: "#sobre-mi", label: "sobre-mi" },
+  { name: "Contacto", link: "mailto:andresperotto71gmail.com", label: "contacto" }
 ];
+
 ---
-<header class="w-full fixed top-0 left-0 z-50 bg-transparent">
-  <nav class="relative flex justify-between items-center px-5 py-4 sm:px-10 rounded-full sm:backdrop-blur-md sm:bg-slate-950/30 sm:shadow-md">
-    <ul class="hidden sm:flex justify-center items-center gap-8 w-full font-bold text-sm sm:text-lg text-white">
+<header class="relative z-50">
+  <nav class="fixed hidden top-0 left-1/2 -translate-x-1/2 bg-slate-950/30 backdrop-blur-md shadow-md px-6 py-3 rounded-b-full md:flex justify-center items-center">
+    <ul class="hidden md:flex justify-center items-center gap-8 font-bold text-sm sm:text-lg text-white">
       {
         NAVIGATIONS.map((nav) => (
           <li>
-            <a href={nav.link} class="hover:text-white/60 transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-white/60 after:transition-all after:duration-300 hover:after:w-full">
+            <a 
+            aria-label={nav.label}
+            href={nav.link} class=" hover:text-white/60 transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-white/60 after:transition-all after:duration-300 hover:after:w-full">
               {nav.name}
             </a>
           </li>
         ))
       }
-  </ul>
+    </ul>
+  </nav>
   <button
-  id="menu-toggle"
-  class="sm:hidden absolute right-3 top-3  flex flex-col justify-center items-center text-center size-9 gap-[6px] group z-50"
-  aria-label="Abrir menú"
+    id="menu-toggle"
+    class="fixed md:hidden top-3 right-4 z-50 flex flex-col justify-center items-center size-9 gap-[6px] group"
+    aria-label="Abrir menú"
   >
-  <span class="bg-white w-6 h-[2px] rounded transition-all duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-[8px]"></span>
-  <span class="bg-white w-6 h-[2px] rounded transition-all duration-300 group-[.open]:opacity-0"></span>
-  <span class="bg-white w-6 h-[2px] rounded transition-all duration-300 group-[.open]:-rotate-45 group-[.open]:-translate-y-[8px]"></span>
-</button>
-</nav>
-<div id="mobile-menu" class="sm:hidden ml-10 mr-10 left-0 hidden rounded-2xl bg-slate-950/90 backdrop-blur-md shadow-lg">
-  <ul class="flex flex-col items-center gap-6 py-6 text-white font-semibold text-lg">
-    {
-      NAVIGATIONS.map((nav) => (
-        <li>
+    <span class="bg-white w-6 h-[2px] rounded transition-all duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-[8px]"></span>
+    <span class="bg-white w-6 h-[2px] rounded transition-all duration-300 group-[.open]:opacity-0"></span>
+    <span class="bg-white w-6 h-[2px] rounded transition-all duration-300 group-[.open]:-rotate-45 group-[.open]:-translate-y-[8px]"></span>
+  </button>
+
+  <div id="mobile-menu"
+       class="md:hidden fixed top-0 left-1/2 -translate-x-1/2 w-[90vw] max-w-xs max-h-0 overflow-hidden opacity-0 transition-[max-height,opacity] duration-500 ease-in-out hidden rounded-b-2xl bg-slate-950/90 backdrop-blur-md shadow-lg px-6">
+    <ul class="flex flex-col items-center gap-6 py-6 text-white font-semibold text-lg">
+      {
+        NAVIGATIONS.map((nav) => (
+          <li>
             <a href={nav.link} class="hover:text-white/60 transition-all duration-300 mobile-link">
               {nav.name}
             </a>
           </li>
         ))
       }
-  </ul>
-</div>
+    </ul>
+  </div>
 
 
-  <script is:inline>
-    const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-    const links = document.querySelectorAll('.mobile-link');
+<script is:inline>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const links = document.querySelectorAll('.mobile-link');
 
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-      toggle.classList.toggle('open');
+  const openMenu = () => {
+    menu.classList.remove('hidden');
+    void menu.offsetHeight;
+    menu.style.maxHeight = menu.scrollHeight + 'px';
+    menu.classList.remove('opacity-0');
+    menu.classList.add('opacity-100');
+  };
+
+  const closeMenu = () => {
+    menu.style.maxHeight = '0px';
+    menu.classList.remove('opacity-100');
+    menu.classList.add('opacity-0');
+    setTimeout(() => {
+      menu.classList.add('hidden');
+    }, 500); 
+  };
+
+  toggle.addEventListener('click', () => {
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden || menu.classList.contains('opacity-0')) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+    toggle.classList.toggle('open');
+  });
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+      toggle.classList.remove('open');
     });
+  });
+</script>
 
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.add('hidden');
-        toggle.classList.remove('open');
-      });
-    });
-  </script>
+<script is:inline>
+
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section")
+    const navItems = document.querySelectorAll("header nav a")
+
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-white/60")
+              item.classList.add("after:w-full")
+            } else {
+              item.classList.remove("text-white/60")
+              item.classList.remove("after:w-full")
+            }
+          })
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    })
+
+    sections.forEach((section) => {
+      observer.observe(section)
+    })
+
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect()
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section)
+        })
+      }
+    }
+  })
+
+</script>
+
 </header>
