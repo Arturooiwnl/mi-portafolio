@@ -2,6 +2,7 @@
 import '../styles/global.css'
 
 import { ClientRouter } from "astro:transitions"
+import {description, siteName, imageMetaAlt} from './constLayout'
 
 interface Props{
 	title: string;
@@ -15,8 +16,24 @@ const {title} = Astro.props;
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/icon.png" />
+		<meta name="description" content={description}/>
+		<meta property="og:title" content={siteName} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://arturoiwnl.pro/" />
+		<meta property="og:locale" content="es" />
+		<meta property="og:description" content={description}/>
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:image" content="https://arturoiwnl.pro/og/bg-og.jpg" />
+		<meta property="og:image:alt" content={imageMetaAlt} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@ArturoPerotto" />
+		<meta name="twitter:title" content={siteName} />
+		<meta name="twitter:description" content={description}/>
+		<meta name="twitter:image" content="https://arturoiwnl.pro/og/bg-og.jpg" />
+		<meta name="twitter:image:alt" content={imageMetaAlt} />
+		<meta name="robots" content="max-image-preview:large" />
 		<title>{title}</title>
 		<ClientRouter />
 	</head>
