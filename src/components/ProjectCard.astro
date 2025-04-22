@@ -4,6 +4,7 @@ import LinkButton from "./LinkButton.astro";
 import GithubRoundedIcon from "./icons/GithubRounded.astro";
 import LinkIcon from "./icons/Link.astro";
 
+
 interface Tag {
   name: string;
   class: string;
@@ -42,12 +43,10 @@ const { image, title, description, repo, demo, tags } = Astro.props;
     <p class="text-pretty text-gray-600 dark:text-gray-300">{description}</p>
 
     <footer class="flex flex-wrap gap-2 mt-4">
-      {repo && (
+
         <LinkButton textColor="" href={repo}><GithubRoundedIcon class="mr-2.5 size-4"/>Código</LinkButton>
-      )}
-      {demo && (
-        <LinkButton textColor="" href={demo}><LinkIcon class="mr-2.5 size-4"/> Preview</LinkButton>
-      )}
+        {demo ? <LinkButton textColor="" href={demo}><LinkIcon class="mr-2.5 size-4"/>Preview</LinkButton> : ""}
+
     </footer>
   </div>
 </article>

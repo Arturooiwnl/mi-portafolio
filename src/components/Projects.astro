@@ -5,6 +5,7 @@ import Title from "./Title.astro"
 
 import TailwindIcon from "./icons/Tailwind.astro"
 import AstroIcon from "./icons/AstroIcon.astro"
+import PreacIcon from "./icons/PreacIcon.astro"
 
 const TAGS = {
     ASTRO: {
@@ -17,6 +18,11 @@ const TAGS = {
         class: "bg-[#003159] text-white",
         icon: TailwindIcon,
     },
+    PREACT: {
+    name: "Preact",
+    class: "bg-[#673AB8] text-white",
+    icon: PreacIcon,
+},
 }
 
 const PROJECTS = [
@@ -24,10 +30,18 @@ const PROJECTS = [
         title: "Portafolio Personal",
         tags:[TAGS.ASTRO,TAGS.TAILWIND],
         description: "Un portafolio personal para mostrar mis proyectos y habilidades. Desarrollado con Astro y Tailwind, uso de JS vanilla minimo, responsivo para todos los dispositivos.",
-        image: "portafolio-personal.jpg",
+        image: "portafolio-personal.png",
         repo: "https://github.com/Arturooiwnl/mi-portafolio",
-        demo: "#home"
-    }
+        demo: ""
+    },
+    {
+        title: "UiComponents - Galería",
+        tags:[TAGS.ASTRO,TAGS.TAILWIND, TAGS.PREACT],
+        description: "Una galería de componentes UI facíl de usar para tus sitios webs hechos con tailwindCSS, te permite visualizar componentes con estilos y copiar su código sin complicaciones.",
+        image: "ui-components.png",
+        repo: "https://github.com/Arturooiwnl/ui-components",
+        demo: "https://uicomponents.arturoiwnl.pro/"
+    },
 ]
 
 
@@ -37,8 +51,13 @@ const PROJECTS = [
         <Title iconName="CodeIcon">Proyectos</Title>
 
         {PROJECTS.map(project => (
-
-            <ItemProject tags={project.tags} title={project.title} image={`/images/projects/${project.image}`} description={project.description} repo={project.repo}/>
-
-        ))}
+            <ItemProject 
+              tags={project.tags}
+              title={project.title}
+              image={`/images/projects/${project.image}`}
+              description={project.description}
+              repo={project.repo}
+              {...(project.demo?.trim() && { demo: project.demo })}
+            />
+          ))}
 </SectionContainer>
