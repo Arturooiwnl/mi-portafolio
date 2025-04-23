@@ -40,12 +40,12 @@ const { image, title, description, repo, demo, tags } = Astro.props;
         </span>
       ))}
     </div>
-    <p class="text-pretty text-gray-600 dark:text-gray-300">{description}</p>
+    <p class="text-pretty text-gray-800 dark:text-white">{description}</p>
 
     <footer class="flex flex-wrap gap-2 mt-4">
 
-        <LinkButton textColor="" href={repo}><GithubRoundedIcon class="mr-2.5 size-4"/>Código</LinkButton>
-        {demo ? <LinkButton textColor="" href={demo}><LinkIcon class="mr-2.5 size-4"/>Preview</LinkButton> : ""}
+      <LinkButton textColor="" href={repo}><GithubRoundedIcon class="mr-2.5 size-4"/>Código</LinkButton>
+      {demo ? <LinkButton textColor="" href={demo}><LinkIcon class="mr-2.5 size-4"/>Preview</LinkButton> : ""}
 
     </footer>
   </div>
