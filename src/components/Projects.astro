@@ -1,7 +1,10 @@
 ---
 import SectionContainer from "./SectionContainer.astro"
 import ItemProject from "./ProjectCard.astro"
+import ItemProjectClient from "./ProjectCardClient.astro"
 import Title from "./Title.astro"
+
+import Modal from './Modal.astro';
 
 import TailwindIcon from "./icons/Tailwind.astro"
 import AstroIcon from "./icons/AstroIcon.astro"
@@ -39,8 +42,18 @@ const PROJECTS = [
         tags:[TAGS.ASTRO,TAGS.TAILWIND, TAGS.PREACT],
         description: "Una galería de componentes UI facíl de usar para tus sitios webs hechos con tailwindCSS, te permite visualizar componentes con estilos y copiar su código sin complicaciones.",
         image: "ui-components.png",
-        repo: "https://github.com/Arturooiwnl/ui-components",
+        // repo: "https://github.com/Arturooiwnl/ui-components",
         demo: "https://uicomponents.arturoiwnl.pro/"
+    },
+]
+const PROJECTS_CLIENTS = [
+    {
+        title: "Landing Page",
+        tags:[TAGS.ASTRO,TAGS.TAILWIND],
+        description: "Landing Page para un servidor de Minecraft. Desarrollado con Astro y Tailwind. Web totalmente animada y responsiva para todos los dispositivos.",
+        image: "landing-page-glaciarmc.png",
+        repo: "",
+        demo: "https://glaciarmc.vercel.app/"
     },
 ]
 
@@ -60,4 +73,26 @@ const PROJECTS = [
               {...(project.demo?.trim() && { demo: project.demo })}
             />
           ))}
-</SectionContainer>
+
+        <footer class="mt-10 border border-gray-600/30 hover:border-gray-700/30 hover:scale-99 bg-white dark:bg-gray-900/20 transition-all duration-300 p-8 rounded-2xl">
+            <div class="flex flex-col gap-2">
+                <h1 class="font-Chakra text-2xl sm:text-3xl bg-gradient-to-r font-bold from-[#7ADBF7] via-[#4AB5E4] to-[#2A6BA9] bg-clip-text text-transparent">Webs de Clientes</h1>
+                <p class="text-gray-600 dark:text-gray-200">También puedes mirar mis proyectos hechos para clientes</p>
+            </div>
+            <div class="mt-10 flex justify-center items-center">
+                <button data-modal-target="test" onclick="document.getElementById('modal-proyecto1').classList.remove('hidden')" class="bg-gray-300 dark:text-white text-gray-800 hover:bg-gray-200 border border-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700  me-2 mb-2 transition-all duration-300 cursor-pointer">Ver más proyectos</button>
+            </div>
+        </footer>
+    </SectionContainer>
+    <Modal id="test" title="Webs de Clientes">
+        {PROJECTS_CLIENTS.map(projectClient => (
+            <ItemProjectClient 
+              tags={projectClient.tags}
+              title={projectClient.title}
+              image={`/images/projects/${projectClient.image}`}
+              description={projectClient.description}
+              repo={projectClient.repo}
+              {...(projectClient.demo?.trim() && { demo: projectClient.demo })}
+            />
+          ))}
+    </Modal>

@@ -20,7 +20,7 @@ const classIcon = "size-8 sm:size-10 text-blue-300 mt-1.5 sm:mt-3 md:size-12"
 const Icon = ICONS[iconName as keyof typeof ICONS] || null;
 ---
 <div class="flex gap-4 justify-between items-center mb-5">
-    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-gray-800 dark:text-white text-center sm:text-left">
+    <h1 class="font-Chakra text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-gray-800 dark:text-white text-center sm:text-left">
         <slot />
     </h1>
     {Icon && <Icon class={classIcon}/>}
