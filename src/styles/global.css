@@ -18,3 +18,9 @@
     }
   }
   
+.tailwind-icon-svg-tag{
+  @apply size-5;
+}
+.astro-icon-svg-tag{
+  @apply size-5;
+}

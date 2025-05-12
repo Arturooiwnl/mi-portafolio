@@ -154,30 +154,37 @@ const VARIANTS = {
     },
     html: {
         activeColor: "#e34c26",
-        gap: 3,
+        gap: 5,
         speed: 20,
         colors: "#f16529,#e34c26,#c13d1b",
         noFocus: false
     },
     css: {
         activeColor: "#264de4",
-        gap: 3,
+        gap: 5,
         speed: 20,
         colors: "#264de4,#2965f1,#3c99dc",
         noFocus: false
     },
     js: {
         activeColor: "#f7df1e",
-        gap: 4,
+        gap: 5,
         speed: 22,
         colors: "#f7df1e,#ffe033,#e4c700",
         noFocus: false
     },
     ts: {
         activeColor: "#3178c6",
-        gap: 4,
+        gap: 5,
         speed: 22,
         colors: "#3178c6,#2c6eb2,#1f487e",
+        noFocus: false
+    },
+    git: {
+        activeColor: "#f05032",
+        gap: 5,
+        speed: 25,
+        colors: "#f05032,#f34f29,#d84a26",
         noFocus: false
     }
 };

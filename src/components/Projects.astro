@@ -1,36 +1,57 @@
 ---
 import SectionContainer from "./SectionContainer.astro"
-import ItemProject from "./ProjectCard.astro"
 import Title from "./Title.astro"
 
-import TailwindIcon from "./icons/Tailwind.astro"
-import AstroIconColors from "./icons/astroIcon.astro";
-import PreacIcon from "./icons/PreacIcon.astro"
+import ProjectCard from "./ProjectCard"
 
 const TAGS = {
     ASTRO: {
         name: "Astro",
-        class: "bg-[#FF8E3C] text-white",
-        icon: AstroIconColors,
+        class: "bg-[#ffa981] text-white",
+        icon: `
+        <svg
+  class="astro-icon-svg-tag"
+  viewBox="0 0 256 366"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="xMidYMid"
+  ><path
+    fill="#fff"
+    d="M182.022 9.147c2.982 3.702 4.502 8.697 7.543 18.687L256 246.074a276.467 276.467 0 0 0-79.426-26.891L133.318 73.008a5.63 5.63 0 0 0-10.802.017L79.784 219.11A276.453 276.453 0 0 0 0 246.04L66.76 27.783c3.051-9.972 4.577-14.959 7.559-18.654a24.541 24.541 0 0 1 9.946-7.358C88.67 0 93.885 0 104.314 0h47.683c10.443 0 15.664 0 20.074 1.774a24.545 24.545 0 0 1 9.95 7.373Z"
+  ></path><path
+    fill="#FF5D01"
+    d="M189.972 256.46c-10.952 9.364-32.812 15.751-57.992 15.751-30.904 0-56.807-9.621-63.68-22.56-2.458 7.415-3.009 15.903-3.009 21.324 0 0-1.619 26.623 16.898 45.14 0-9.615 7.795-17.41 17.41-17.41 16.48 0 16.46 14.378 16.446 26.043l-.001 1.041c0 17.705 10.82 32.883 26.21 39.28a35.685 35.685 0 0 1-3.588-15.647c0-16.886 9.913-23.173 21.435-30.48 9.167-5.814 19.353-12.274 26.372-25.232a47.588 47.588 0 0 0 5.742-22.735c0-5.06-.786-9.938-2.243-14.516Z"
+  ></path></svg
+>  `,
     },
     TAILWIND: {
         name: "Tailwind CSS",
         class: "bg-[#003159] text-white",
-        icon: TailwindIcon,
-    },
-    PREACT: {
-    name: "Preact",
-    class: "bg-[#673AB8] text-white",
-    icon: PreacIcon,
-},
+        icon: `
+<svg
+  class="tailwind-icon-svg-tag"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 54 33"
+  ><g clip-path="url(#a)"
+    ><path
+      fill="#38bdf8"
+      fill-rule="evenodd"
+      d="M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.513 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z"
+      clip-rule="evenodd"></path></g
+  ><defs
+    ><clipPath id="a"><path fill="#fff" d="M0 0h54v32.4H0z"></path></clipPath
+    ></defs
+  ></svg
+> `,
+    }
 }
 
 const PROJECTS = [
     {
         title: "Portafolio Personal",
         tags:[TAGS.ASTRO,TAGS.TAILWIND],
-        description: "Un portafolio personal para mostrar mis proyectos y habilidades. Desarrollado con Astro y Tailwind, uso de JS vanilla minimo, responsivo para todos los dispositivos.",
-        image: "portafolio-personal.png",
+        description: "Un portafolio personal para mostrar mis proyectos y habilidades. Desarrollado con Astro, Tailwind, React. Responsivo para todos los dispositivos. Proyecto de codigo abierto en Github.",
+        image: "/images/projects/portafolio-personal.png",
         repo: "https://github.com/Arturooiwnl/mi-portafolio",
         demo: ""
     },
@@ -38,7 +59,7 @@ const PROJECTS = [
         title: "Landing Page",
         tags:[TAGS.ASTRO,TAGS.TAILWIND],
         description: "Landing Page para un servidor de Minecraft. Desarrollado con Astro y Tailwind. Web totalmente animada y responsiva para todos los dispositivos.",
-        image: "landing-page-glaciarmc.png",
+        image: "/images/projects/landing-page-glaciarmc.png",
         repo: "",
         demo: "https://glaciarmc.vercel.app/"
     },
@@ -46,17 +67,18 @@ const PROJECTS = [
 
 ---
 <SectionContainer id="proyectos">
+    <Title iconName="CodeIcon">Proyectos</Title>
 
-        <Title iconName="CodeIcon">Proyectos</Title>
-
-        {PROJECTS.map(project => (
-            <ItemProject 
-              tags={project.tags}
-              title={project.title}
-              image={`/images/projects/${project.image}`}
-              description={project.description}
-              repo={project.repo}
-              {...(project.demo?.trim() && { demo: project.demo })}
-            />
-          ))}
-    </SectionContainer>
+    {PROJECTS.map(project => (
+        <ProjectCard 
+            client:load
+            tags={project.tags}
+            title={project.title}
+            image={project.image}
+            description={project.description}
+            repo={project.repo}
+            demo={project.demo}
+            spotlightColor="rgba(255, 255, 255, 0.1)"
+        />
+    ))}
+</SectionContainer>
