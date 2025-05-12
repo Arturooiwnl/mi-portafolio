@@ -146,12 +146,32 @@ const EDUCATION_ITEMS = [
     
             {MAIN_TECNOLOGIES.map((technology) => (   
             <a href={technology.website} target="_blank" rel="noopener noreferrer" aria-label={`Tecnología ${technology.name}`} role="button">
-                <PixelCard variant={technology.name} className="group" client:only="react">
+                <PixelCard variant={technology.name} className="pixel-card group" client:only="react">
                     <div class="relative">
                         
-                        <technology.icon class="z-10 size-15 saturate-0 group-hover:scale-150 group-hover:saturate-200 transition-all duration-300"/>
+                        <technology.icon class={`pixel-card-tech-icon-${technology.name} z-10 size-15 saturate-0 group-hover:scale-150 group-hover:saturate-200 transition-all duration-300`}/>
                         <technology.icon class="-z-1 absolute top-0 size-15 saturate-0 group-hover:scale-150 group-hover:blur-md group-hover:saturate-200 transition-all duration-300"/>
                     </div>
+
+<style>
+
+    @media (width >= 360px ) {
+        .pixel-card.pixel-card-tech-icon-astro:hover,
+        .pixel-card.pixel-card-tech-icon-react:hover,
+        .pixel-card.pixel-card-tech-icon-tailwind:hover,
+        .pixel-card.pixel-card-tech-icon-preact:hover,
+        .pixel-card.pixel-card-tech-icon-html:hover,
+        .pixel-card.pixel-card-tech-icon-css:hover,
+       .pixel-card.pixel-card-tech-icon-js:hover,
+       .pixel-card.pixel-card-tech-icon-ts:hover,
+       .pixel-card.pixel-card-tech-icon-git:hover {
+            transform: scale(1.5);
+            filter: saturate(200);
+        }
+    }
+
+</style>
+
                 </PixelCard>
             </a>
                     ))}

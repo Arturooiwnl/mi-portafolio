@@ -24,3 +24,6 @@
 .astro-icon-svg-tag{
   @apply size-5;
 }
+.react-icon-svg-tag{
+  @apply size-5;
+}
