@@ -1,23 +1,18 @@
-# PORTAFOLIO PERSONAL | Arturoiwnl 
+# 💼 Personal Portfolio | Arturoiwnl (Junior Frontend Developer)
 
-## Tecnologias Usadas:
+> [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/Arturooiwnl/mi-portafolio?tab=MIT-1-ov-file)
+> [![Stars](https://img.shields.io/github/stars/Arturooiwnl/mi-portafolio?style=social)](https://github.com/Arturooiwnl/mi-portafolio)
 
-- Astro
-- TailwindCSS 
-- React
----
+Welcome to my personal portfolio! This project showcases my work and skills with modern technologies.
 
-Este proyecto es una muestra de mi portafolio personal, desarrollado con Astro, TailwindCSS y React.
+## 🛠️ Built With
 
-Puedes utilizarlo como base para tu propio portafolio o como ejemplo de cómo puedes utilizar Astro, TailwindCSS y React en tu proyecto.
+> - [Astro](https://astro.build/) - A modern static site builder that delivers lightning-fast performance
+> - [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework
+> - [React](https://reactjs.org/) - A JavaScript library for building user interfaces
 
-Me gustaria que si utilizas este proyecto como base puedas darme una estrella en el repositorio para que me reconozcas como autor.
----
+## 🚀 Getting Started
 
-Recursos bajo licencia MIT:
+Feel free to use this code however you want! Just don't forget to give the project a ⭐ on GitHub if you find it useful.
 
-[LICENCIA MIT](https://github.com/Arturooiwnl/mi-portafolio?tab=MIT-1-ov-file)
-
----
-
-
+1. Clone the repository and use anything you want :)
