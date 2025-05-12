@@ -3,6 +3,59 @@ import Title from "./Title.astro"
 import SectionContainer from "./SectionContainer.astro";
 import ItemEducacion from "./ItemEducacion.astro";
 
+import AstroIcon from "./icons/astroIcon.astro";
+import ReactIcon from "./icons/reactIcon.astro";
+import TailwindIcon from "./icons/tailwindIcon.astro";
+import PreactIcon from "./icons/preactIcon.astro";
+import htmlIcon from "./icons/htmlIcon.astro";
+import cssIcon from "./icons/cssIcon.astro";
+import jsIcon from "./icons/javascriptIcon.astro";
+import tsIcon from "./icons/typescriptIcon.astro";
+
+import PixelCard from "./PixelCard";
+
+const TECNOLOGIES = [
+    {
+        name: "astro",
+        website: "https://astro.build/",
+        icon: AstroIcon,
+    },
+    {
+        name: "react",
+        website: "https://react.dev/",
+        icon: ReactIcon,
+    },
+    {
+        name: "tailwind",
+        website: "https://tailwindcss.com/",
+        icon: TailwindIcon,
+    },
+    {
+        name: "preact",
+        website: "https://preactjs.com/",
+        icon: PreactIcon,
+    },
+    {
+        name: "html",
+        website: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+        icon: htmlIcon,
+    },
+    {
+        name: "css",
+        website: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+        icon: cssIcon,
+    },
+    {
+        name: "js",
+        website: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        icon: jsIcon,
+    },
+    {
+        name: "ts",
+        website: "https://www.typescriptlang.org/",
+        icon: tsIcon,
+    },
+]
 const EDUCATION_ITEMS = [
     {
         title: "Entrando al Mundo de la Programación",
@@ -21,6 +74,8 @@ const EDUCATION_ITEMS = [
     },
 ];
 
+
+
 ---
 
 <SectionContainer
@@ -34,4 +89,29 @@ const EDUCATION_ITEMS = [
             ))
         }
     </ol>
+
+    <footer class="mt-20 flex flex-col justify-center items-center">
+        
+            <h2 class="relative text-2xl sm:textl-3xl font-mono text-blue-400 dark:text-blue-300">Tecnlogias Preferidas
+
+                <span class="absolute w-1/2 h-1 top-10 left-1/2 translate-x-[-50%] bg-slate-800 dark:bg-slate-600"></span>
+
+            </h2>
+        <div class="mt-15 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+
+{            TECNOLOGIES.map((technology) => (   
+    <a href={technology.website} target="_blank" rel="noopener noreferrer" aria-label={`Tecnología ${technology.name}`} role="button">
+        <PixelCard variant={technology.name} className="group" client:only="react">
+            <div class="relative">
+                
+                <technology.icon class="z-10 size-15 saturate-0 group-hover:scale-150 group-hover:saturate-200 transition-all duration-300"/>
+                <technology.icon class="-z-1 absolute top-0 size-15 saturate-0 group-hover:scale-150 group-hover:blur-md group-hover:saturate-200 transition-all duration-300"/>
+            </div>
+        </PixelCard>
+    </a>
+            ))}
+        </div>
+
+    </footer>
+
 </SectionContainer>

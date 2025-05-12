@@ -60,11 +60,8 @@ const MAIL = {
   link: "mailto:andresperotto71@gmail.com"
 }
 ---
-
-<SectionContainer
-  id="home"
->
-  <div class="max-w-2xl w-full flex flex-col gap-6">
+<section id="home" class="relative mt-28 py-30 px-6 md:px-10 scroll-mt-36 flex justify-center items-center mx-auto w-full">
+  <div class="max-w-2xl w-full flex flex-col gap-6 items-center">
     <div
       class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
     >
@@ -96,10 +93,9 @@ const MAIL = {
                 grid
                 grid-cols-2
                 text-center
-                ">
+                w-full">
         {
             SOCIAL_LINKS.map((social) =>(
-
             <SocialButton extraClass="justify-center" textColor={social.defaultColor} href={social.link}><social.icon class="mr-2.5 size-6"/> {social.name}</SocialButton>
             ))
         }
@@ -108,5 +104,4 @@ const MAIL = {
         <SocialButtonAnimated extraClass={MAIL.class} href={MAIL.link}><MAIL.icon class="mr-2.5 size-6"/> {MAIL.displayName}</SocialButtonAnimated>
     </div>
   </div>
-
-</SectionContainer>
+</section>
