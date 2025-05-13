@@ -27,3 +27,6 @@
 .react-icon-svg-tag{
   @apply size-5;
 }
+.preact-icon-svg-tag{
+  @apply size-5;
+}
