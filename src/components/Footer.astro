@@ -1,6 +1,9 @@
+---
+import GithubRoundedIcon from "./icons/GithubRounded.astro"
 
-<footer class="bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800/50">
-    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+---
+<footer class=" bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800/50">
+    <div class="w-full mx-auto max-w-screen-xl p-4 flex gap-3 flex-col justify-center items-center md:flex-row md:justify-between">
       <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="#home" class="hover:underline">Arturoiwnl</a>. Algunos derechos reservados.
     </span>
     <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
@@ -20,5 +23,8 @@
             <a href="mailto:andresperotto71@gmail.com" class="hover:underline me-4 md:me-6">Contáctame</a>
         </li>
     </ul>
+    <div class="items-center">
+        <a class="text-gray-700 dark:text-white/80 hover:text-gray-600/90 dark:hover:text-white/90 relative group transition-all duration-300" aria-label="ir al repositorio" href="https://github.com/Arturooiwnl/mi-portafolio" target="_blank" rel="noopener noreferrer"><GithubRoundedIcon/><span class="absolute opacity-0 -top-10 left-1/2 -translate-x-1/2 group-hover:opacity-100 bg-slate-300 dark:bg-slate-500 px-2 py-1 rounded-lg transition-all duration-300 text-gray-700 dark:text-white/80">Código</span></a>
+    </div>
     </div>
 </footer>
