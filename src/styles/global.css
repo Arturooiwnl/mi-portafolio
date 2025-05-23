@@ -30,3 +30,6 @@
 .preact-icon-svg-tag{
   @apply size-5;
 }
+.firebase-icon-svg-tag{
+  @apply size-5;
+}
